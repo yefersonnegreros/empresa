@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingController;
+
+
+Route::get('/', function () {
+    return view('home');
+})->name('inicio');
+
+
+Route::prefix('servicios')->group(function () {
+    Route::get('/', [LandingController::class, 'servicios'])->name('servicios.index');
+    Route::get('/{id}', [LandingController::class, 'detalleServicio'])
+        ->name('servicios.detalle')
+        ->where('id', '[A-Za-z]+'); 
+});
+
+Route::prefix('proyectos')->group(function () {
+    Route::get('/', [LandingController::class, 'proyectos'])->name('proyectos.index');
+    Route::get('/{id}', [LandingController::class, 'detalleProyecto'])
+        ->name('proyectos.detalle')
+        ->where('id', '[A-Za-z]+');
+});
+
+Route::prefix('clientes')->group(function () {
+    Route::get('/', [LandingController::class, 'clientes'])->name('clientes.index');
+    Route::get('/{id}', [LandingController::class, 'detalleCliente'])
+        ->name('clientes.detalle')
+        ->where('id', '[A-Za-z]+');
+});
+
+Route::prefix('blogs')->group(function () {
+    Route::get('/', [LandingController::class, 'blogs'])->name('blogs.index');
+    Route::get('/{id}', [LandingController::class, 'detalleblog'])
+        ->name('blogs.detalle')
+        ->where('id', '[0-9]+'); 
+});
+
+Route::get('/contacto', [LandingController::class, 'contacto'])->name('contacto.index');
