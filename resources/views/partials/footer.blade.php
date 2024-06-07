@@ -17,6 +17,7 @@
                     <li><a class="text-white text-decoration-none" href="{{route('proyectos.index')}}">Proyectos</a></li>
                     <li><a class="text-white text-decoration-none" href="{{route('clientes.index')}}">Clientes</a></li>
                     <li><a class="text-white text-decoration-none" href="{{route('blogs.index')}}">Blog</a></li>
+                    <li><a class="text-white text-decoration-none" href="{{route('personas.index')}}">Personas</a></li>
                     <li><a class="text-white text-decoration-none" href="{{route('contacto.index')}}">Contacto</a></li>
                 </ul>
             </div>

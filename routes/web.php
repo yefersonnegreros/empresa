@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
-
+use App\Http\Controllers\PersonasController;
 
 Route::get('/', function () {
     return view('home');
@@ -35,6 +35,13 @@ Route::prefix('blogs')->group(function () {
     Route::get('/{id}', [LandingController::class, 'detalleblog'])
         ->name('blogs.detalle')
         ->where('id', '[0-9]+'); 
+});
+
+Route::prefix('personas')->group(function () {
+    Route::get('/', [PersonasController::class, 'index'])->name('personas.index');
+    Route::get('/{id}', [PersonasController::class, 'show'])
+        ->name('personas.show')
+        ->where('id', '[A-Za-z0-9]+');
 });
 
 Route::get('/contacto', [LandingController::class, 'contacto'])->name('contacto.index');

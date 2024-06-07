@@ -17,22 +17,25 @@
             <div class="mx-auto"></div>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('inicio') }}">Home</a>
+                    <a class="nav-link {{ setActivo('inicio') }}" href="{{ route('inicio') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('servicios.index')}}">Servicios</a>
+                    <a class="nav-link {{ setActivo('servicios.index') }}" href="{{route('servicios.index')}}">Servicios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('proyectos.index')}}">Proyectos</a>
+                    <a class="nav-link {{ setActivo('proyectos.index') }}" href="{{route('proyectos.index')}}">Proyectos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('clientes.index')}}">Clientes</a>
+                    <a class="nav-link {{ setActivo('clientes.index') }}" href="{{route('clientes.index')}}">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('blogs.index')}}">Blog</a>
+                    <a class="nav-link {{ setActivo('blogs.index') }}" href="{{route('blogs.index')}}">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('contacto.index')}}">Contacto</a>
+                    <a class="nav-link {{ setActivo('personas.index') }}" href="{{route('personas.index')}}">Personas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ setActivo('contacto.index') }}" href="{{route('contacto.index')}}">Contacto</a>
                 </li>
             </ul>
         </div>
