@@ -9,13 +9,13 @@ class PersonasController extends Controller
 {
     public function index()
     {
-        $personas = Persona::all();
+        $personas = Persona::latest()->paginate(3);
         return view('personas.index', compact('personas'));
     }
 
-    public function show($id)
+    public function show($nPerCodigo)
     {
-        $persona = Persona::findOrFail($id);
+        $persona = Persona::findOrFail($nPerCodigo);
         return view('personas.show', compact('persona'));
     }
 }
