@@ -39,9 +39,15 @@ Route::prefix('blogs')->group(function () {
 
 Route::prefix('personas')->group(function () {
     Route::get('/', [PersonasController::class, 'index'])->name('personas.index');
+    Route::get('/crear',[PersonasController::class,'create'])->name('personas.create');
+    Route::post('/crear', [PersonasController::class, 'store'])->name('personas.store');
+    
     Route::get('/{id}', [PersonasController::class, 'show'])
         ->name('personas.show')
         ->where('id', '[A-Za-z0-9]+');
+
 });
+
+
 
 Route::get('/contacto', [LandingController::class, 'contacto'])->name('contacto.index');
