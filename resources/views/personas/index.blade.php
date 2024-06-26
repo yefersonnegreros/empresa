@@ -49,7 +49,15 @@
                         <h5 class="card-title">{{ $persona->cPerNombre }} {{ $persona->cPerApellido }}</h5>
                         <p class="card-text">Dirección: {{ $persona->cPerDireccion }}</p>
                         <p class="card-text">Edad: {{ $persona->nPerEdad }}</p>
-                        <a href="{{ route('personas.show', $persona->nPerCodigo) }}" class="btn btn-primary">Ver Detalles</a>
+                        <a href="{{ route('personas.edit', $persona->nPerCodigo) }}" class="btn btn-primary">Editar</a>
+                        <a href="{{ route('personas.show', $persona->nPerCodigo) }}" class="btn btn-secondary">Ver Detalles</a>
+
+                        <form action="{{ route('personas.destroy', $persona->nPerCodigo) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Eliminar</button>
+                        </form>
+                    
                     </div>
                 </div>
             </div>

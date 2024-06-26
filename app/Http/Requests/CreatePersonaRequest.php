@@ -30,6 +30,7 @@ class CreatePersonaRequest extends FormRequest
             'cPerSexo' => 'required|in:Masculino,Femenino',
             'nPerSueldo' => 'required|numeric|max:999999.99',
             'cPerRnd' => 'required|max:10',
+            'nPerEstado' => 'required|in:0,1',
         ];
     }
 
@@ -40,7 +41,7 @@ class CreatePersonaRequest extends FormRequest
             'cPerApellido.max' => 'El apellido no puede tener más de 50 caracteres.',
             'cPerNombre.required' => 'El nombre es obligatorio.',
             'cPerNombre.max' => 'El nombre no puede tener más de 50 caracteres.',
-            'cPerDireccion.required' => 'La direccion es obligatoria.',
+            'cPerDireccion.required' => 'La dirección es obligatoria.',
             'cPerDireccion.max' => 'La dirección no puede tener más de 100 caracteres.',
             'dPerFecNac.required' => 'La fecha de nacimiento es obligatoria.',
             'dPerFecNac.date' => 'La fecha de nacimiento no es válida.',
@@ -55,6 +56,8 @@ class CreatePersonaRequest extends FormRequest
             'nPerSueldo.max' => 'El sueldo no puede ser mayor a 999999.99.',
             'cPerRnd.required' => 'El RND es obligatorio.',
             'cPerRnd.max' => 'El RND no puede tener más de 10 caracteres.',
+            'nPerEstado.required' => 'El estado es obligatorio.',
+            'nPerEstado.in' => 'El estado seleccionado no es válido.',
         ];
     }
 }

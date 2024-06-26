@@ -40,12 +40,18 @@ Route::prefix('blogs')->group(function () {
 Route::prefix('personas')->group(function () {
     Route::get('/', [PersonasController::class, 'index'])->name('personas.index');
     Route::get('/crear',[PersonasController::class,'create'])->name('personas.create');
-    Route::post('/crear', [PersonasController::class, 'store'])->name('personas.store');
+    Route::post('crear', [PersonasController::class, 'store'])->name('personas.store');
     
+    Route::get('/{id}/editar',[PersonasController::class,'edit'])->name('personas.edit');
+    Route::patch('/{id}', [PersonasController::class, 'update'])->name('personas.update');
     Route::get('/{id}', [PersonasController::class, 'show'])
         ->name('personas.show')
         ->where('id', '[A-Za-z0-9]+');
 
+    Route::delete('/{persona}', [PersonasController::class, 'destroy'])->name('personas.destroy');
+
+
+    
 });
 
 
