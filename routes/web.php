@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PersonasController;
+use App\Http\Controllers\ContactoController;
 
 Route::get('/', function () {
     return view('home');
@@ -57,3 +58,4 @@ Route::prefix('personas')->group(function () {
 
 
 Route::get('/contacto', [LandingController::class, 'contacto'])->name('contacto.index');
+Route::post('contacto', [ContactoController::class, 'store'])->name('contacto.store');
