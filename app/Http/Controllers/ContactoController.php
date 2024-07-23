@@ -26,18 +26,12 @@ class ContactoController extends Controller
             'mensaje.required' => 'El mensaje es obligatorio.',
         ]);
 
-        // return new MensajeRecibido(
-        //     $mensaje['nombre'],
-        //     $mensaje['email'],
-        //     $mensaje['asunto'],
-        //     $mensaje['mensaje']
-        // );
         
         Mail::to('negrerosempresa@gmail.com')->send(new MensajeRecibido($mensaje));
 
         // return 'Datos validados y correo enviado';
-        return redirect()->route('contacto.index')->with('success', '¡Correo enviado correctamente!');
-            
+        // return redirect()->route('contacto.index')->with('success', '¡Correo enviado correctamente!');
+        return back()->with('success','Datos validados y correo enviado correctamente');
     }
 
 

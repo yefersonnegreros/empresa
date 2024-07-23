@@ -37,6 +37,21 @@
                 <li class="nav-item">
                     <a class="nav-link {{ setActivo('contacto.index') }}" href="{{route('contacto.index')}}">Contacto</a>
                 </li>
+                @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('login')}}">Login</a>
+                </li>
+                @else
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Cerrar Sesión</a>
+                </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                @endguest
+                
             </ul>
         </div>
     </div>

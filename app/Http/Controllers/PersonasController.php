@@ -9,6 +9,11 @@ use App\Http\Requests\CreatePersonaRequest;
 
 class PersonasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index','show');
+    }
+
     public function index()
     {
         $personas = Persona::latest()->paginate(3);
@@ -43,45 +48,13 @@ class PersonasController extends Controller
         return redirect()->route('personas.index')
                         ->with('success', 'Persona creada exitosamente.');
     }
-    // public function store(CreatePersonaRequest $request)
-    // {
-    //     $camposValidados = $request->validated();
-
-    //     Persona::create($camposValidados);
-        
-    //     return redirect()->route('personas.index')
-    //                     ->with('success', 'Persona creada exitosamente.');
-    // }
-
-
-    public function edit(Persona $id){
-
-        return view('personas.edit',[
-            'persona' =>$id
-        ]);
-
+    
+    public function edit(Persona $persona)
+    {
+        return view('personas.edit', compact('persona'));
     }
 
-    // public function update(Persona $id)
-    // {
-    //     $id->update([
-    //         'cPerApellido' => request('cPerApellido'),
-    //         'cPerNombre' => request('cPerNombre'),
-    //         'cPerDireccion' => request('cPerDireccion'),
-    //         'dPerFecNac' => request('dPerFecNac'),
-    //         'nPerEdad' => request('nPerEdad'),
-    //         'cPerSexo' => request('cPerSexo'),
-    //         'nPerSueldo' => request('nPerSueldo'),
-    //         'cPerRnd' => request('cPerRnd'),
-    //         'nPerEstado' => request('nPerEstado'),
-    //     ]);
-
-    //     return redirect()->route('personas.index',$id)
-    //                     ->with('success', 'Persona actualizada exitosamente.');
-    // }
-
-
-    public function update(Request $request, Persona $id)
+    public function update(Request $request, Persona $persona)
     {
         $camposValidados = $request->validate([
             'cPerApellido' => 'required|max:50',
@@ -94,23 +67,13 @@ class PersonasController extends Controller
             'cPerRnd' => 'required|max:10',
             'nPerEstado' => 'required|in:0,1',
         ]);
-
-        $id->update($camposValidados);
-
-        return redirect()->route('personas.index', $id)
-                        ->with('success', 'Persona actualizada exitosamente.');
+    
+        $persona->update($camposValidados);
+    
+        return redirect()->route('personas.index')
+                            ->with('success', 'Persona actualizada exitosamente.');
     }
 
-        // public function update(CreatePersonaRequest $request, Persona $persona)
-        // {
-        //     $camposValidados = $request->validated();
-        //     $persona->update($camposValidados);
-
-        //     return redirect()->route('personas.index', $persona)
-        //                     ->with('success', 'Persona actualizada exitosamente.');
-        // }
-
-    
         public function destroy(Persona $persona)
         {
             $persona->delete();

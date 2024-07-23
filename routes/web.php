@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PersonasController;
 use App\Http\Controllers\ContactoController;
+use Illuminate\Support\Facades\Auth;
 
+// Ruta raíz
 Route::get('/', function () {
     return view('home');
 })->name('inicio');
@@ -38,24 +40,26 @@ Route::prefix('blogs')->group(function () {
         ->where('id', '[0-9]+'); 
 });
 
-Route::prefix('personas')->group(function () {
-    Route::get('/', [PersonasController::class, 'index'])->name('personas.index');
-    Route::get('/crear',[PersonasController::class,'create'])->name('personas.create');
-    Route::post('crear', [PersonasController::class, 'store'])->name('personas.store');
+// Route::prefix('personas')->group(function () {
+//     Route::get('/', [PersonasController::class, 'index'])->name('personas.index');
+//     Route::get('/crear',[PersonasController::class,'create'])->name('personas.create');
+//     Route::post('crear', [PersonasController::class, 'store'])->name('personas.store');
     
-    Route::get('/{id}/editar',[PersonasController::class,'edit'])->name('personas.edit');
-    Route::patch('/{id}', [PersonasController::class, 'update'])->name('personas.update');
-    Route::get('/{id}', [PersonasController::class, 'show'])
-        ->name('personas.show')
-        ->where('id', '[A-Za-z0-9]+');
+//     Route::get('/{id}/editar',[PersonasController::class,'edit'])->name('personas.edit');
+//     Route::patch('/{id}', [PersonasController::class, 'update'])->name('personas.update');
+//     Route::get('/{id}', [PersonasController::class, 'show'])
+//         ->name('personas.show')
+//         ->where('id', '[A-Za-z0-9]+');
 
-    Route::delete('/{persona}', [PersonasController::class, 'destroy'])->name('personas.destroy');
+//     Route::delete('/{persona}', [PersonasController::class, 'destroy'])->name('personas.destroy');
 
-
-    
-});
+// });
+Route::resource('personas', PersonasController::class)->middleware('auth');
 
 
 
 Route::get('/contacto', [LandingController::class, 'contacto'])->name('contacto.index');
 Route::post('contacto', [ContactoController::class, 'store'])->name('contacto.store');
+
+//Auth::routes();
+Auth::routes(['register' => false]);
