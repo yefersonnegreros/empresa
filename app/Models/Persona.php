@@ -13,7 +13,8 @@ class Persona extends Model
 
     public $incrementing = true;
     protected $fillable = [
-        'cPerApellido', 'cPerNombre', 'cPerDireccion', 'dPerFecNac', 'nPerEdad','cPerSexo' ,'nPerSueldo','cPerRnd','nPerEstado'
+        'cPerApellido', 'cPerNombre', 'cPerDireccion', 'dPerFecNac', 
+        'nPerEdad','cPerSexo' ,'nPerSueldo','cPerRnd','nPerEstado','image'
     ];
 
 }

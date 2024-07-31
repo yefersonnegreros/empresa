@@ -31,6 +31,8 @@ class CreatePersonaRequest extends FormRequest
             'nPerSueldo' => 'required|numeric|max:999999.99',
             'cPerRnd' => 'required|max:10',
             'nPerEstado' => 'required|in:0,1',
+            'image' => 'nullable|image|max:2048|mimes:jpeg,png,jpg',
+
         ];
     }
 
@@ -58,6 +60,8 @@ class CreatePersonaRequest extends FormRequest
             'cPerRnd.max' => 'El RND no puede tener más de 10 caracteres.',
             'nPerEstado.required' => 'El estado es obligatorio.',
             'nPerEstado.in' => 'El estado seleccionado no es válido.',
+            'image.image' => 'El archivo debe ser una imagen.',
+            'image.max' => 'La imagen no puede ser mayor a 2MB.',
         ];
     }
 }

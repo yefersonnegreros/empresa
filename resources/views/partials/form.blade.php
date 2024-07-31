@@ -74,6 +74,16 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label for="image" class="form-label">Imagen:</label>
+        <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
+        @error('image')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+</div>
+
 <div class="pie-tarjeta text-center">
     <div>
         <a href="{{ route('personas.index') }}" class="btn btn-secondary">Volver a la Lista</a>
