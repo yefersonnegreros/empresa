@@ -76,6 +76,18 @@
 
 <div class="row">
     <div class="col-md-6 mb-3">
+        <label for="category" class="form-label">Categoría:</label>
+        <select id="category" name="category_id" class="form-select @error('category_id') is-invalid @enderror">
+            <option value="">Seleccione una categoría</option>
+            @foreach($categories as $id => $name)
+                <option value="{{ $id }}" {{ old('category_id', $persona->category_id) == $id ? 'selected' : '' }}>{{ $name }}</option>
+            @endforeach
+        </select>
+        @error('category_id')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+    <div class="col-md-6 mb-3">
         <label for="image" class="form-label">Imagen:</label>
         <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
         @error('image')
@@ -89,7 +101,6 @@
         <a href="{{ route('personas.index') }}" class="btn btn-secondary">Volver a la Lista</a>
     </div>
     <div>
-        {{-- <button type="submit" class="btn btn-primary">Guardar</button> --}}
         <button class="btn btn-primary">{{$btnText}}</button>
     </div>
 </div>
